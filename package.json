@@ -4,7 +4,7 @@
   "description": "Wrapper for HasOffers API (http://www.hasoffers.com/wiki/Category:API)",
   "version": "0.0.0",
   "repository": {
-    "url": ""
+    "url": "git@github.com:timisbusy/node-hasoffers.git"
   },
   "main": "index.js",
   "engines": {
@@ -14,6 +14,6 @@
     "request": "2.9.200",
     "qs": "0.4.2",
     "underscore": "1.3.3"
-    },
+  },
   "devDependencies": {}
 }
