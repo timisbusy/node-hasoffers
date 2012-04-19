@@ -261,8 +261,6 @@ HasOffers.prototype.reports = {
 
 HasOffers.prototype.sendRequest = function sendRequest(params, callback){
   var params = _.extend(this.vars, params); 
-  console.log(this.hasoffers_hostname);
-  console.log(params);
   request.post({
     headers: { 
       'content-type': 'application/x-www-form-urlencoded' 
@@ -275,8 +273,6 @@ HasOffers.prototype.sendRequest = function sendRequest(params, callback){
       callback(err);
     } else {
       data = JSON.parse(data);
-      console.log(data);
-      console.log('response status: ', data.response.status);
       if (data.response.status === -1) {
         callback(new Error('Error code: '+ data.response.data.error_code + ' \nError name: ' + data.response.data.error_name + ' \nPublic Message: ' + data.response.data.public_message ));
       } else {
