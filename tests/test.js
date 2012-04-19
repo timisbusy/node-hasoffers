@@ -98,9 +98,9 @@ describe('Has Offers API', function(){
       results.should.have.property('affiliateStats');
     });
   });
-  describe('reports.getConversions(["Stat.affiliate_info","Stat.id"],callback)', function(){
+  describe('reports.getConversions(["Stat.affiliate_info","Stat.id"], { page: 1 },callback)', function(){
     it('should get conversion stats without error', function(done){
-      ho.reports.getConversions(["Stat.affiliate_info","Stat.id"],function(err, result, data){
+      ho.reports.getConversions(["Stat.affiliate_info","Stat.id"], { page: 1 }, function(err, result, data){
         console.log(data);
         results.conversionStats = data;
         done(err);

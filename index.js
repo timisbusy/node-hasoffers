@@ -39,67 +39,107 @@ HasOffers.prototype.offers = {
   targetParams: {
     Target: "Offer"
   },
-  create: function create(data, callback){
+  create: function create(data, options, callback){
     var addParams = {
       Method: "create",
       data: data
     }
-    var params = _.extend(this.targetParams, addParams);
-    this.sendRequest(params, callback);
-  },
-  findAll: function findAll(callback){
-    var addParams = {
-      Method: "findAll"
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  findById: function findById(id, callback){
+  findAll: function findAll(options, callback){
+    var addParams = {
+      Method: "findAll"
+    }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
+    }
+    var params = _.extend(this.targetParams, addParams);
+    this.sendRequest(params, callback);
+  },
+  findById: function findById(id, options, callback){
     var addParams = {
       Method: "findById",
       id: id
     }
-    var params = _.extend(this.targetParams, addParams);
-    this.sendRequest(params, callback);
-  },
-  findAllByIds: function findAllByIds(ids, callback){
-    var addParams = {
-      Method: "findAllByIds",
-      ids: ids
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  generateTrackingLink: function generateTrackingLink(offer_id, affiliate_id, callback){
+  findAllByIds: function findAllByIds(ids, options, callback){
+    var addParams = {
+      Method: "findAllByIds",
+      ids: ids
+    }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
+    }
+    var params = _.extend(this.targetParams, addParams);
+    this.sendRequest(params, callback);
+  },
+  generateTrackingLink: function generateTrackingLink(offer_id, affiliate_id, options, callback){
     var addParams = {
       Method: "generateTrackingLink",
       offer_id: offer_id,
       affiliate_id: affiliate_id
     }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
+    }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  generateTrackingPixel: function generateTrackingPixel(offer_id, callback){
+  generateTrackingPixel: function generateTrackingPixel(offer_id, options, callback){
     var addParams = {
       Method: "generateTrackingPixel",
       offer_id: offer_id
     }
-    var params = _.extend(this.targetParams, addParams);
-    this.sendRequest(params, callback);
-  },
-  getOverview: function getOverview(offer_id, callback){
-    var addParams = {
-      Method: "getOverview",
-      offer_id: offer_id
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  update: function update(id, data, callback){
+  getOverview: function getOverview(offer_id, options, callback){
+    var addParams = {
+      Method: "getOverview",
+      offer_id: offer_id
+    }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
+    }
+    var params = _.extend(this.targetParams, addParams);
+    this.sendRequest(params, callback);
+  },
+  update: function update(id, data, options, callback){
     var addParams = {
       Method: "update",
       id: id,
       data: data
+    }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
@@ -110,25 +150,40 @@ HasOffers.prototype.affiliates = {
   targetParams: {
     Target: "Affiliate"
   },
-  create: function create(data, callback){
+  create: function create(data, options, callback){
     var addParams = {
       Method: "create",
       data: data
     }
-    var params = _.extend(this.targetParams, addParams);
-    this.sendRequest(params, callback);
-  },
-  findAll: function findAll(callback){
-    var addParams = {
-      Method: "findAll"
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  findById: function findById(id, callback){
+  findAll: function findAll(options, callback){
+    var addParams = {
+      Method: "findAll"
+    }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
+    }
+    var params = _.extend(this.targetParams, addParams);
+    this.sendRequest(params, callback);
+  },
+  findById: function findById(id, options, callback){
     var addParams = {
       Method: "findById",
       id: id
+    }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
@@ -142,28 +197,28 @@ HasOffers.prototype.reports = {
 
   // Hasoffers API reference for Stat Fields:
   // http://www.hasoffers.com/wiki/Api_Model:Stat#Stat_Report_Fields
-  getAffiliateCommissions: function getAffiliateCommissions(fields, page, callback){
+  getAffiliateCommissions: function getAffiliateCommissions(fields, options, callback){
     var addParams = {
       Method: "getAffiliateCommissions",
       fields: fields
     }
-    if(typeof page === 'function'){
-      callback = page;
+    if(typeof options === 'function'){
+      callback = options;
     }else{
-      addParams.page = page;
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  getConversions: function getConversions(fields, page, callback){
+  getConversions: function getConversions(fields, options, callback){
     var addParams = {
       Method: "getConversions",
       fields: fields
     }
-    if(typeof page === 'function'){
-      callback = page;
+    if(typeof options === 'function'){
+      callback = options;
     }else{
-      addParams.page = page;
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
@@ -175,28 +230,28 @@ HasOffers.prototype.reports = {
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  getReferrals: function getReferrals(fields, page, callback){
+  getReferrals: function getReferrals(fields, options, callback){
     var addParams = {
       Method: "getReferrals",
       fields: fields
     }
-    if(typeof page === 'function'){
-      callback = page;
+    if(typeof options === 'function'){
+      callback = options;
     }else{
-      addParams.page = page;
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  getStats: function getStats(fields, page, callback){
+  getStats: function getStats(fields, options, callback){
     var addParams = {
       Method: "getStats",
       fields: fields
     }
-    if(typeof page === 'function'){
-      callback = page;
+    if(typeof options === 'function'){
+      callback = options;
     }else{
-      addParams.page = page;
+      addParams = _.extend(addParams, options);
     }
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
