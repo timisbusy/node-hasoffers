@@ -7,6 +7,7 @@
 ## Required:
 
 You will need to:
+
 1. set up a HasOffers account
 2. get API credentials
 3. whitelist your IP address (this can take a while)
