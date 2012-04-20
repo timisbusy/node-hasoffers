@@ -12,7 +12,7 @@ You will need to:
 2. get API credentials
 3. whitelist your IP address (this can take a while)
 
-More info at: https://hasoffers.com/
+More info at: http://hasoffers.com/
 
 ## Usage
 
