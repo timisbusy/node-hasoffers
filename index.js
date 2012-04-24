@@ -280,6 +280,6 @@ HasOffers.prototype.sendRequest = function sendRequest(params, callback){
       }
     }
   });
-}
+};
 
 module.exports = HasOffers;

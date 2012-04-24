@@ -14,11 +14,15 @@ You will need to:
 
 More info at: http://hasoffers.com/
 
+## Installation
+
+    npm install hasoffers
+
 ## Usage
 
 Require the hasoffers package: 
 
-    var HasOffers = require('hasoffers')
+    var HasOffers = require('hasoffers');
 
 Instantiate and provide required authentication details options. 
 
