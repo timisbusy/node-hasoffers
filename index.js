@@ -1,5 +1,6 @@
 var request = require('request'),
     qs = require('qs'),
+    util = require('util'),
     _ = require('underscore');
 
 function HasOffers(options){
@@ -274,12 +275,31 @@ HasOffers.prototype.sendRequest = function sendRequest(params, callback){
     } else {
       data = JSON.parse(data);
       if (data.response.status === -1) {
-        callback(new Error('Error code: '+ data.response.data.error_code + ' \nError name: ' + data.response.data.error_name + ' \nPublic Message: ' + data.response.data.public_message ));
+        if(data.response.errors){
+          console.log('err data = ' + util.inspect(data));
+          callback(new HasOffersError(data.response.errors));
+        }
+        else callback(new Error('Error code: '+ data.response.data.error_code + ' \nError name: ' + data.response.data.error_name + ' \nPublic Message: ' + data.response.data.public_message ));
       } else {
         callback(null, res, data.response.data);
       }
     }
   });
 };
+
+function HasOffersError (errors) {
+  Error.captureStackTrace(this, HasOffersError); 
+  this.errors = errors;
+}
+
+util.inherits(HasOffersError, Error); 
+
+HasOffersError.prototype.toString = function toString (){
+  var arr = [];
+  _.each(this.errors, function (error) {
+    arr.push(util.inspect(error));
+  });
+  return "HasOffersError: " + arr.join('\n');
+}
 
 module.exports = HasOffers;
