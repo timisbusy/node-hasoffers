@@ -19,6 +19,10 @@ function HasOffers(options){
   this.offers.vars = this.vars;
   this.offers.hasoffers_hostname = this.hasoffers_hostname;
 
+  this.offerPixels.sendRequest = this.sendRequest;
+  this.offerPixels.vars = this.vars;
+  this.offerPixels.hasoffers_hostname = this.hasoffers_hostname;
+
   this.affiliates.sendRequest = this.sendRequest;
   this.affiliates.vars = this.vars;
   this.affiliates.hasoffers_hostname = this.hasoffers_hostname;
@@ -40,7 +44,7 @@ HasOffers.prototype.offers = {
   targetParams: {
     Target: "Offer"
   },
-  create: function create(data, options, callback){
+  create: function create(data, options, callback) {
     var addParams = {
       Method: "create",
       data: data
@@ -191,6 +195,61 @@ HasOffers.prototype.affiliates = {
   }
 };
 
+HasOffers.prototype.offerPixels = {
+  targetParams: {
+    Target: "OfferPixel"
+  },
+  create: function create (offer_id, affiliate_id, type, code, status, options, callback) {
+    if(type !== 'code' && type !== 'image' && type !== 'url') {
+      throw new Error('type must be \'code\', \'image\', or \'url\'.');
+    }
+    var addParams = {
+      Method: "create"
+      , data: {
+        offer_id: offer_id
+        , affiliate_id: affiliate_id
+        , type: type
+        , code: code
+        , status: status
+      }
+    };
+    if (typeof options === 'function') {
+      callback = options;
+    } else {
+      addParams = _.extend(addParams, options);
+    }
+    var params = _.extend(this.targetParams, addParams);
+    this.sendRequest(params, callback);
+  },
+  findById: function findById (id, options, callback) {
+    var addParams = {
+      Method: "findById",
+      id: id
+    }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
+    }
+    var params = _.extend(this.targetParams, addParams);
+    this.sendRequest(params, callback);
+  },
+  udpate: function update (id, data, options, callback) {
+    var addParams = {
+      Method: "update",
+      id: id,
+      data: data
+    }
+    if(typeof options === 'function'){
+      callback = options;
+    }else{
+      addParams = _.extend(addParams, options);
+    }
+    var params = _.extend(this.targetParams, addParams);
+    this.sendRequest(params, callback);
+  }
+}
+
 HasOffers.prototype.reports = {
   targetParams: {
     Target: "Report"
@@ -271,6 +330,7 @@ HasOffers.prototype.sendRequest = function sendRequest(params, callback){
     form: true
   }, function(err, res, data){
     if (err) { 
+      console.log('error here');
       callback(err);
     } else {
       data = JSON.parse(data);
