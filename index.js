@@ -234,7 +234,7 @@ HasOffers.prototype.offerPixels = {
     var params = _.extend(this.targetParams, addParams);
     this.sendRequest(params, callback);
   },
-  udpate: function update (id, data, options, callback) {
+  update: function update (id, data, options, callback) {
     var addParams = {
       Method: "update",
       id: id,

@@ -12,43 +12,43 @@ var ho = new HasOffers({
 
 describe('Has Offers API', function(){
   var results = {};
-  describe('validate(callback)', function(){
-    it('should validate without error', function(done){
-      ho.validate(function(err, result, data){
-        results.validation_data = data;
-        done(err);
-      });
-    });
-    it('should have brought back a bit of data', function() {
-      results.should.have.property('validation_data');
-    });
-    it('should have returned true', function() {
-      results.should.have.property('validation_data').equal(true);
-    });
-  });
-  describe('offers.findAll(callback)', function(){
-    it('should find offers without error', function(done){
-      ho.offers.findAll(function(err, result, data){
-        results.all_offers = data;
-        done(err);
-      });
-    });
-    it('should have brought back a bit of data', function() {
-      results.should.have.property('all_offers');
-    });
-  });
-  describe('offers.findById(callback)', function(){
-    it('should find offer without error', function(done){
-      ho.offers.findById(22,function(err, result, data){
-        results.offer_2 = data;
-        console.log(util.inspect(data));
-        done(err);
-      });
-    });
-    it('should have brought back a bit of data', function() {
-      results.should.have.property('offer_2');
-    });
-  });
+  // describe('validate(callback)', function(){
+  //   it('should validate without error', function(done){
+  //     ho.validate(function(err, result, data){
+  //       results.validation_data = data;
+  //       done(err);
+  //     });
+  //   });
+  //   it('should have brought back a bit of data', function() {
+  //     results.should.have.property('validation_data');
+  //   });
+  //   it('should have returned true', function() {
+  //     results.should.have.property('validation_data').equal(true);
+  //   });
+  // });
+  // describe('offers.findAll(callback)', function(){
+  //   it('should find offers without error', function(done){
+  //     ho.offers.findAll(function(err, result, data){
+  //       results.all_offers = data;
+  //       done(err);
+  //     });
+  //   });
+  //   it('should have brought back a bit of data', function() {
+  //     results.should.have.property('all_offers');
+  //   });
+  // });
+  // describe('offers.findById(callback)', function(){
+  //   it('should find offer without error', function(done){
+  //     ho.offers.findById(22,function(err, result, data){
+  //       results.offer_2 = data;
+  //       console.log(util.inspect(data));
+  //       done(err);
+  //     });
+  //   });
+  //   it('should have brought back a bit of data', function() {
+  //     results.should.have.property('offer_2');
+  //   });
+  // });
   describe('offerpixels.create(callback)', function() {
     var affiliateId = 1
       , offerId = 198
@@ -95,7 +95,7 @@ describe('Has Offers API', function(){
         };
 
         it('should create offer pixel without error', function(done){
-          ho.offerPixels.udpate(offerPixelId, inputData, function(err, result, data){
+          ho.offerPixels.update(offerPixelId, inputData, function(err, result, data){
             if(err) { throw err; }
             if(result.statusCode === 200){
               console.log('updated test offer pixel');
@@ -138,48 +138,49 @@ describe('Has Offers API', function(){
   //     results.should.have.property('offerData');
   //   });
   // });
-  describe('offers.findAll(callback)', function(){
-    it('should find offers without error', function(done){
-      ho.offers.findAll(function(err, result, data){
-        results.all_offers = data;
-        done(err);
-      });
-    });
-    it('should have brought back a bit of data', function() {
-      results.should.have.property('all_offers');
-    });
-  });
-  describe('reports.getAffiliateCommissions(["Stat.amount","Affiliate.company"],callback)', function(){
-    it('should get affiliate stats without error', function(done){
-      ho.reports.getAffiliateCommissions(["Stat.amount","Affiliate.company"],function(err, result, data){
-        results.affiliateStats = data;
-        done(err);
-      });
-    });
-    it('should have brought back a bit of data', function() {
-      results.should.have.property('affiliateStats');
-    });
-  });
-  describe('reports.getConversions(["Stat.affiliate_info","Stat.id"], { page: 1 },callback)', function(){
-    it('should get conversion stats without error', function(done){
-      ho.reports.getConversions(["Stat.affiliate_info","Stat.id"], { page: 1 }, function(err, result, data){
-        results.conversionStats = data;
-        done(err);
-      });
-    });
-    it('should have brought back a bit of data', function() {
-      results.should.have.property('conversionStats');
-    });
-  });
-  describe('reports.getOverview(callback)', function(){
-    it('should get overview stats without error', function(done){
-      ho.reports.getOverview(function(err, result, data){
-        results.overviewStats = data;
-        done(err);
-      });
-    });
-    it('should have brought back a bit of data', function() {
-      results.should.have.property('overviewStats');
-    });
-  });
+
+  // describe('offers.findAll(callback)', function(){
+  //   it('should find offers without error', function(done){
+  //     ho.offers.findAll(function(err, result, data){
+  //       results.all_offers = data;
+  //       done(err);
+  //     });
+  //   });
+  //   it('should have brought back a bit of data', function() {
+  //     results.should.have.property('all_offers');
+  //   });
+  // });
+  // describe('reports.getAffiliateCommissions(["Stat.amount","Affiliate.company"],callback)', function(){
+  //   it('should get affiliate stats without error', function(done){
+  //     ho.reports.getAffiliateCommissions(["Stat.amount","Affiliate.company"],function(err, result, data){
+  //       results.affiliateStats = data;
+  //       done(err);
+  //     });
+  //   });
+  //   it('should have brought back a bit of data', function() {
+  //     results.should.have.property('affiliateStats');
+  //   });
+  // });
+  // describe('reports.getConversions(["Stat.affiliate_info","Stat.id"], { page: 1 },callback)', function(){
+  //   it('should get conversion stats without error', function(done){
+  //     ho.reports.getConversions(["Stat.affiliate_info","Stat.id"], { page: 1 }, function(err, result, data){
+  //       results.conversionStats = data;
+  //       done(err);
+  //     });
+  //   });
+  //   it('should have brought back a bit of data', function() {
+  //     results.should.have.property('conversionStats');
+  //   });
+  // });
+  // describe('reports.getOverview(callback)', function(){
+  //   it('should get overview stats without error', function(done){
+  //     ho.reports.getOverview(function(err, result, data){
+  //       results.overviewStats = data;
+  //       done(err);
+  //     });
+  //   });
+  //   it('should have brought back a bit of data', function() {
+  //     results.should.have.property('overviewStats');
+  //   });
+  // });
 });
