@@ -2,7 +2,7 @@
   "author": "Tim Atkinson <tim@gochime.com> (http://gochime.com)",
   "name": "hasoffers",
   "description": "Wrapper for HasOffers API (http://www.hasoffers.com/wiki/Category:API)",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": {
     "url": "git@github.com:timisbusy/node-hasoffers.git"
   },
