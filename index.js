@@ -326,8 +326,7 @@ HasOffers.prototype.sendRequest = function sendRequest(params, callback){
       'content-type': 'application/x-www-form-urlencoded' 
     },
     url: this.hasoffers_hostname + "/Api?"+ qs.stringify(params),
-    body: qs.stringify(params),
-    form: true
+    body: JSON.stringify(params)
   }, function(err, res, data){
     if (err) { 
       console.log('error here');
