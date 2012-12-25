@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/timisbusy/node-hasoffers.png)](http://travis-ci.org/timisbusy/node-hasoffers)
 # HasOffers API Wrapper for Node.js
 
 ## This is an incomplete wrapper for the HasOffers API, documented here:
